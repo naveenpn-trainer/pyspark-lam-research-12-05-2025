@@ -1,0 +1,36 @@
+services:
+  master:
+    image: npnnaveenpn/hadoop-master:v1
+    ports:
+      - "9870:9870"
+      - "8088:8088"
+      - "19888:19888"
+      - "8188:8188"
+      - "50070:50070"
+      - "9090:9090"
+      - "8888:8888"
+      - "4040-4050:4040-4050"
+      - "7199:7199"
+      - "9042:9042"
+      - "2181:2181"      
+      - "9092-9096:9092-9096"
+    volumes:
+      - "./workdir:/home/naveenpn/workdir"
+    container_name: "master"
+
+  slave1:
+    image: npnnaveenpn/hadoop-slave:v1
+    container_name: "slave1"
+    ports:
+      - "9901:9864"
+      - "8041:8042"
+
+  slave2:
+    image: npnnaveenpn/hadoop-slave:v1
+    container_name: "slave2"
+    ports:
+      - "9902:9864"
+      - "8042:8042"
+
+volumes:
+  workdir:  # Defining the named volume
